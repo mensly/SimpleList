@@ -2,4 +2,6 @@
     <string name="app_name">SimpleList</string>
     <string name="add_item">Add Item</string>
     <string name="heading">My List</string>
+    <string name="tap_to_connect">Tap to connect\nto %1$s</string>
+    <string name="swipe_to_exit">Swipe down again to exit</string>
 </resources>
