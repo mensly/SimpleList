@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.SystemClock
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.KeyEvent
@@ -95,15 +96,21 @@ class GlassJoyInputView @JvmOverloads constructor(
     }
 
     override fun onKeyLongPress(keyCode: Int, event: KeyEvent): Boolean {
-        _inputs.value = InputGesture.HardwareButtonHeld
+        if (keyCode == KeyEvent.KEYCODE_CAMERA) {
+            _inputs.value = InputGesture.HardwareButtonHeld
+            return true
+        }
         return super.onKeyLongPress(keyCode, event)
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
-        if (_inputs.value != InputGesture.HardwareButtonHeld) {
-            _inputs.value = InputGesture.HardwareButton
+        if (keyCode == KeyEvent.KEYCODE_CAMERA) {
+            if (_inputs.value != InputGesture.HardwareButtonHeld) {
+                _inputs.value = InputGesture.HardwareButton
+            }
+            _inputs.value = null
+            return true
         }
-        _inputs.value = null
         return super.onKeyUp(keyCode, event)
     }
 
