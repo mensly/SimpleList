@@ -8,7 +8,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "cat.balrog.simplelist"
+        applicationId "eyeoyou.simplelist"
         minSdk 27
         targetSdk 31
         versionCode 1
